@@ -1,0 +1,68 @@
+//- Стандартный шаблон страницы
+
+include mixins.pug
+
+doctype html
+html(lang='ru')
+
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        //- Edge и ряд мобильных браузеров слишком умны. Отключим это.
+        meta(name='format-detection', content='telephone=no')
+        meta(name='format-detection', content='date=no')
+        meta(name='format-detection', content='address=no')
+        meta(name='format-detection', content='email=no')
+        meta(content='notranslate', name='google')
+
+        //- Start of Social Graph Protocol Meta Data
+        meta(property="og:locale" content="ru-Ru")
+        meta(property="og:type" content="website")
+        meta(property="og:title" content="")
+        meta(property="og:description" content="")
+        //- <meta property="og:url" content="http://preview.velgir.com/projects/wild-zaruba/">
+        //- <meta property="og:image" content="http://preview.velgir.com/projects/wild-zaruba/img/reg/reg-bg.png">
+        //- End of Social Graph Protocol Meta Data
+
+        //- Фавиконки (https://realfavicongenerator.net)
+        link(rel='apple-touch-icon', sizes='180x180', href='/favicon/apple-touch-icon.png')
+        link(rel='icon', type='image/png', sizes='32x32', href='/favicon/favicon-32x32.png')
+        link(rel='icon', type='image/png', sizes='16x16', href='/favicon/favicon-16x16.png')
+        link(rel='manifest', href='/favicon/site.webmanifest')
+        link(rel='mask-icon', href='/favicon/safari-pinned-tab.svg', color='#5bbad5')
+        link(rel="shortcut icon" href="favicon/favicon.ico")
+        meta(name='msapplication-TileColor', content='#5bbad5')
+        meta(name="msapplication-config" content="favicon/browserconfig.xml")
+        meta(name='theme-color', content='#000')
+        meta(name='msapplication-navbutton-color', content='#000')
+        meta(name='apple-mobile-web-app-status-bar-style', content='#000')
+        //- <!-- Yandex.Metrika counter -->
+        script(type="text/javascript")
+            include metrika.js
+        </script><noscript><div><img src="https://mc.yandex.ru/watch/95302256" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        //- <!-- /Yandex.Metrika counter -->
+
+        block meta
+            title Home
+
+        block head
+            link(rel='stylesheet', href='css/style.min.css?v=1714')
+            //-script
+                //-include ../js/head-script.js
+
+    body
+        noscript У вас отключен JavaScript. Это пугает. You have JavaScript disabled. It scares.
+        .wrapper
+            block header
+                include ../blocks/header/header
+            main
+                block content
+                    p содержимое
+            block footer
+                include ../blocks/footer/footer
+        block page-bottom
+            include ../blocks/modal/modal
+            script(src="js/libs.min.js?v=1714")
+            script(src="js/scripts.min.js?v=1714")
+            //-script(src="js/rs.js")
+            //-script(src="js/pages-switcher.js")

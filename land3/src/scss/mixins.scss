@@ -1,0 +1,78 @@
+@mixin transition($element: all, $time: .25s, $function: linear) {
+	transition: $time $function;
+	transition-property: #{$element};
+}
+
+@mixin transition-cubic($time: .25s, $function: cubic-bezier(1,0,0,1), $element: all) {
+	transition: $element $time $function;
+}
+
+//example convertVH:
+//min-height: calc(#{convertVH(100)} - 20px);
+//height: calc(#{convertVH(100)} / 2 + 40px);
+@function convertVH($val) {
+	@return calc(var(--vh, 1vh) * #{$val});
+}
+
+//example heightVH:
+//@include heightVH(100, 'min');
+//@include heightVH(80, 'max');
+//@include heightVH(100);
+@mixin heightVH($val: 100, $pre: '') {
+	$vh: calc(var(--vh, 1vh) * #{$val});
+	@if $pre != '' {
+		#{$pre}-height: $val+vh;
+		#{$pre}-height: $vh;
+	} @else {
+		height: $val+vh;
+		height: $vh;
+	}
+}
+
+@mixin scrollbar($width: 2px, $rail-color: #ccc, $bar-color: #999) {
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+	scrollbar-color: $bar-color $rail-color;
+	scrollbar-width: thin;
+	&::-webkit-scrollbar {
+		width: $width;
+		height: $width;
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-thumb:vertical {
+		background-color: $bar-color;
+	}
+	&::-webkit-scrollbar-thumb:horizontal {
+		background-color: $bar-color;
+	}
+}
+
+@mixin optional-at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+	  @content;
+	}
+  }
+
+@mixin placeholder {
+	@include optional-at-root('::-webkit-input-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root(':-moz-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root('::-moz-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root(':-ms-input-placeholder') {
+		@content;
+	}
+}
+// @include placeholder {
+//     color: green;
+// }

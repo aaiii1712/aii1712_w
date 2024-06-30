@@ -1,0 +1,21 @@
+extends ../pug/layout.pug
+
+block meta
+    title 1F - ваш надёжный партнёр в мире логистики
+    meta(name='description', content='')
+
+//-block append head
+   link(rel='stylesheet', href='css/some.css')
+
+//-block header
+
+block content
+    include ../blocks/hero/hero
+    include ../blocks/infosection/infosection
+
+//-block footer
+
+//-block prepend page-bottom
+//-    include ../blocks/modal-test/modal-test
+//- block append page-bottom
+//-   script(src='js/some.js')

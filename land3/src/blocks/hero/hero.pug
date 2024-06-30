@@ -1,0 +1,53 @@
+section.hero 
+  .container 
+    form.hero-form#main-form
+      .hero-form__left 
+        h1.hero-form__title.title Доставка из Китая и Европы
+        p.hero-form__txt.text 30+ проверенных перевозчиков
+        img(src="/img/form-img.svg", alt="")
+      .hero-form__right 
+        .radio-row 
+          .radio-row__item(data-text="Сборник")
+            span.radio-row__item-status 
+            .radio-row__item-content
+              .icon 
+                img(src="/img/radio/default/radio1.svg", alt="").def
+                img(src="/img/radio/hover/radio1.svg", alt="").hover
+              p Сборники
+          .radio-row__item(data-text="Авиадоставка") 
+            span.radio-row__item-status 
+            .radio-row__item-content
+              .icon 
+                img(src="/img/radio/default/radio2.svg", alt="").def
+                img(src="/img/radio/hover/radio2.svg", alt="").hover
+              p Авиадоставка
+          .radio-row__item(data-text="Полная загрузка")  
+            span.radio-row__item-status 
+            .radio-row__item-content
+              .icon 
+                img(src="/img/radio/default/radio3.svg", alt="").def
+                img(src="/img/radio/hover/radio3.svg", alt="").hover
+              p Полная загрузка
+        .check-row 
+          +checkbox('payments', 'Требуется помощь с платежами за товары')
+        .route-row   
+          .input-group
+            input(type="text" name="route-form"  placeholder="Откуда ")
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 6L20 12M20 12L14 18M20 12H5" stroke="#605E5C" stroke-width="2"/>
+          </svg>
+          .input-group
+            input(type="text" name="route-to"  placeholder="Куда ")
+        .inputs-row   
+          .input-group
+            input(type="text" name="name"  placeholder="Ваше имя")
+          .input-group
+            input(type="tel"  name="phone" data-inputmask='"mask": "+9(999) 999-99-99"' data-num-min='11' placeholder="Телефон")
+        p.hero-form__note Отправляя запрос вы соглашаетесь 
+          a(href="https://app.1f.ru/docs/consent_to_processing.pdf" target="_blank") с политикой обработки персональных данных
+        input(type="hidden" name="conditions") 
+        button(type="submit" disabled).blue-btn.is-disabled.send-carriers Отправить запрос нескольким перевозчикам
+          span Для продолжения заполните поля выше
+            <svg width="64" height="9" viewBox="0 0 64 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H40L33.4948 7.31833C32.6992 8.21336 31.3008 8.21336 30.5052 7.31833L24 0Z" fill="#14181F"/>
+            </svg>

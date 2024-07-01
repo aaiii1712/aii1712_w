@@ -40,11 +40,11 @@
   }
 
   &__close {
-    width: 67px;
-    height: 67px;
+    width: 32px;
+    height: 32px;
     position: absolute;
-    right: -68px;
-    top: -67px;
+    right: 15px;
+    top: 15px;
     cursor: pointer;
     z-index: 2;
     transition: .25s linear;
@@ -68,7 +68,7 @@
   }
 
   &__content {
-    max-width: 480px;
+    max-width: 500px;
     width: 100%;
     margin: auto;
     background-color: #fff;

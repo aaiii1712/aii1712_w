@@ -1,0 +1,26 @@
+// Widths   420 479 575 640 767 991 1199 1400 
+$mobile-sm:     479px;
+$mobile:        575px;
+$mobile-big:    767px;
+$tablet:        991px;
+$desktop:       1199px;
+
+$grid-spacing: 30px;
+$grid-spacing-sm: 20px;
+
+$base-img: '../img/';
+
+$font-size: 16px;
+$line-height: 1.5;
+// Fonts
+$default-font: 'Inter', sans-serif;//400/700
+$additional-font: 'Montserrat', sans-serif;//400/700/800
+
+// Colors
+$text-color: #1E1D1D;
+$color-error: #E60000;
+$blue: #6420FF;
+$black: #010001;
+$gray: #F9F9F9;
+
+$transition: 0.25s;

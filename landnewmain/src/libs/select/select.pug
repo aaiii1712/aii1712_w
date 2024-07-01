@@ -1,0 +1,64 @@
+mixin selectListItem(name, value, active, mods)
+    //- Принимает:
+    //- name {string} - имя селект элемента
+    //- value {string} - значение селект элемента, передаётся в input, если не указан - будет приравнен к name
+    //- active {boolean} - добавляет класс is-active для выбранного селект элемента
+    //- mods {string} - список модификаторов i-select__item--{mods}
+    //- Вызов:
+        +selectListItem('Москва')
+        +selectListItem('Москва', '',)
+        +selectListItem('Москва', '', true)
+        +selectListItem('Томск', 'Тмс', true)
+    -
+        // список модификаторов
+        var allMods = '';
+        if(typeof(mods) !== 'undefined' && mods) {
+            var modsList = mods.split(',');
+            for (var i = 0; i < modsList.length; i++) {
+                allMods = allMods + ' i-select__item--' + modsList[i].trim();
+            }
+        }
+        if(typeof(active) !== 'undefined' && active) {
+            allMods = allMods + ' is-active';
+        }
+    if(typeof(value) !== 'undefined' && value)
+        if(value === '')
+            value = name
+        li.i-select__item(data-value=value class=allMods role='option')&attributes(attributes)!=name
+            block
+    else
+        li.i-select__item(data-value=name class=allMods role='option')&attributes(attributes)!=name
+            block
+
+mixin select(data)
+    //- Принимает:
+    //- data {object} - объект с данными(ниже описано то, что в него входит)
+    //- inputName - имя инпута
+    //- inputValue - value инпута
+    //- placeholder - дефолтный текст, при отсутствии выбранного в селекте
+    //- selectedTxt - выбранный текст(то, что и в дроп-списке выбранно)
+    //- mainIcon (если есть) - иконка перед выбранным текстом в main
+    //- Вызов:
+        +select({
+            inputName: 'city',
+            inputValue: 'Москва',
+            placeholder: 'Выберите Город',
+            selectedTxt: 'Мск',
+            mainIcon: `
+                <svg width="15" height="18" viewBox="0 0 15 18">
+                    <use xlink:href="img/sprite.svg#marker"></use>
+                </svg>
+            `,
+        })
+    .i-select&attributes(attributes)
+        input(hidden type='text' name=data.inputName value=data.inputValue data-default-value=data.inputValue)
+        .i-select__main(tabindex='0' role='combobox' aria-expanded='false')
+            if (data.mainIcon)
+                .i-select__main-icon!=data.mainIcon
+            p(data-placeholder=data.placeholder).i-select__selected!=data.selectedTxt
+            .i-select__arrow
+                svg(width="9" height="8" viewBox="0 0 9 8"): use(xlink:href="img/sprite.svg#arrow-down")
+        .i-select__drop.is-default-hidden
+            .i-select__drop-inner
+                ul(role="listbox").i-select__list
+                    block

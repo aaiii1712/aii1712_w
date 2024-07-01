@@ -1,0 +1,32 @@
+.modal-succ {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 42px;
+    width: 100%;
+    max-width: 190px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+  }
+}

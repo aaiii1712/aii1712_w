@@ -1,0 +1,36 @@
+mixin radio(name, val, text, ch, disabled)
+    //- Принимает:
+    //- name {string} - имя radio
+    //- text {string} - текст radio
+    //- val {string} - value radio
+    //- ch {boolean} - состояние radio(checked)
+    //- disabled {boolean} - disabled ли radio
+    //- Вызов:
+        +radio('agree', 'yes', 'Запомнить меня')
+        +radio('agree', 'no', 'Не запоминать меня', true)
+        +radio('agree', 'maybe', 'Может запомните меня?', false, true)
+    .i-radio&attributes(attributes)
+        label.i-radio__label
+            input(type="radio" name=name value=val checked=ch disabled=disabled hidden)
+            span(tabindex='0').i-radio__custom
+            span.i-radio__text!=text
+            block
+
+//- radio с не кликабельным текстом(за пределом label)
+mixin radioOut(name, val, text, ch, disabled)
+    //- Принимает:
+    //- name {string} - имя radio
+    //- text {string} - текст radio
+    //- val {string} - value radio
+    //- ch {boolean} - состояние radio(checked)
+    //- disabled {boolean} - disabled ли radio
+    //- Вызов:
+        +radioOut('agree', 'yes', 'Запомнить меня')
+        +radioOut('agree', 'no', 'Не запоминать меня', true)
+        +radioOut('agree', 'maybe', 'Может запомните меня?', false, true)
+    .i-radio.i-radio--out&attributes(attributes)
+        label.i-radio__label
+            input(type="radio" name=name value=val checked=ch disabled=disabled hidden)
+            span(tabindex='0').i-radio__custom
+        span!=text
+        block

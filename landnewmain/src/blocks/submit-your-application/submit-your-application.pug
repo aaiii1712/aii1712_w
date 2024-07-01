@@ -1,0 +1,21 @@
+section.submit-your-application
+  .container-sm
+    form.sua-form 
+      h4.sua-form__title Всё что вам  нужно, просто оставить заявку
+      p.sua-form__txt В течение пары часов Вы получите уведомление на почту о новых предложения на доставку и оплату товара
+      .sua-form__fields 
+        .input-group
+          input(type="text" name="route-form"  placeholder="Откуда")
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 12L20.7071 11.2929L21.4142 12L20.7071 12.7071L20 12ZM5 13C4.44771 13 4 12.5523 4 12C4 11.4477 4.44771 11 5 11V13ZM14.7071 5.29289L20.7071 11.2929L19.2929 12.7071L13.2929 6.70711L14.7071 5.29289ZM20.7071 12.7071L14.7071 18.7071L13.2929 17.2929L19.2929 11.2929L20.7071 12.7071ZM20 13H5V11H20V13Z" fill="#33363F"/>
+        </svg>
+        .input-group
+          input(type="text" name="route-to"  placeholder="Куда ")
+        .input-group
+          input(type="tel"  name="phone" data-inputmask='"mask": "+9(999) 999-99-99"' data-num-min='11' placeholder="Ваш телефон")
+      .input-group
+        textarea(type="text" name="cargo-info"  placeholder="Информация о грузе")
+      .sua-form__submit-row 
+        button(type="submit" disabled).blue-btn.is-disabled.submit-btn Запросить расчет
+        p.sua-form__policy   Отправляя форму Вы принимаете политику 
+          a(href="https://app.1f.ru/docs/consent_to_processing.pdf" target="_blank") обработки персональных данных 

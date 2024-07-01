@@ -1,0 +1,14 @@
+mixin burger(txt)
+  //- Принимает:
+  //- txt {string} - если есть, то добавляется текст рядом с бургером
+  //- Вызов:
+      +burger
+      +burger('Burger txt')
+  .burger&attributes(attributes)
+    .burger__wrap
+      .burger__item
+      .burger__item
+      .burger__item
+      .burger__item
+    if (txt)
+      .burger__txt!=txt

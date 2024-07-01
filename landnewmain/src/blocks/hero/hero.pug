@@ -1,0 +1,16 @@
+section.hero.section-padding  
+  .hero-title-wrp 
+    .container-sm
+      h1.hero-title Бесплатный сервис<br> по доставке грузов и платежам за товары
+section.section-padding.hero-form-section 
+  .container-sm 
+    form.hero-form
+      p.hero-form__title Подберем надежного перевозчика для доставки и оплаты товара
+      .hero-form__inputs 
+        .input-group
+            input(type="text" name="name"  placeholder="Имя")
+        .input-group
+          input(type="tel"  name="phone" data-inputmask='"mask": "+9(999) 999-99-99"' data-num-min='11' placeholder="Ваш телефон")
+        button(type="submit" disabled).blue-btn.is-disabled.submit-btn Запросить расчет
+      p.hero-form__policy   Отправляя форму Вы принимаете политику 
+        a(href="https://app.1f.ru/docs/consent_to_processing.pdf" target="_blank") обработки персональных данных 

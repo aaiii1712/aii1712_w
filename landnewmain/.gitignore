@@ -1,0 +1,26 @@
+dist/
+!dist/readme.md
+design/
+
+#generated automatically START
+src/pug/mixins.pug
+src/js/entry.js
+src/scss/style.scss
+#generated automatically END
+
+__MACOSX
+.Saved/
+_arc/
+bower_components/
+node_modules/
+package-lock.json
+.vscode/
+.publish/
+.DS_Store
+*.log
+*.sublime-*
+*.rar
+*.zip
+.idea
+ex_files
+Thumbs.db

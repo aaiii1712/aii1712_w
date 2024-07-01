@@ -1,0 +1,15 @@
+mixin rs(data)
+    .slider-r-box&attributes(attributes)
+        p.slider-r-label!=data.label
+        .slider-r-wrapper
+            .slider-r-text
+                .slider-r-val.val-from
+                    |от 
+                    span
+                    input(type="text" name=data.input +'-from' hidden)
+                .slider-r-val.val-to
+                    |до 
+                    span
+                    input(type="text" name=data.input + '-to' hidden)
+
+            .slider-r(data-start=data.start data-end=data.end data-step=data.step data-min=data.min data-max=data.max)

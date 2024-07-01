@@ -1,0 +1,9 @@
+mixin modal()
+    //- Вызов:
+        +modal().modal-images
+            p some blocks
+    .i-modal.is-default-hidden&attributes(attributes)
+        .i-modal__content
+            .i-modal__close(data-modal-close) &times;
+            .i-modal__inner
+                block

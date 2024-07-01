@@ -1,0 +1,57 @@
+.advantages-grid {
+  display: grid;
+  grid-gap: 12px;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+
+  @media (max-width: $mobile-big) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    br {
+      display: none;
+    }
+  }
+
+  &__item {
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #CCCCCC;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+
+
+
+    &:nth-child(1) {
+      grid-column: span 6;
+      background: #262626;
+      color: white;
+      border-color: #262626;
+    }
+    &:nth-child(2) {
+      grid-column: span 3;
+    }
+    &:nth-child(3) {
+      grid-column: span 3;
+    }
+    &:nth-child(4) {
+      grid-column: span 2;
+    }
+    &:nth-child(5) {
+      grid-column: span 2;
+    }
+    &:nth-child(6) {
+      grid-column: span 2;
+    }
+  }
+
+}

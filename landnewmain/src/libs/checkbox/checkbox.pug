@@ -1,0 +1,32 @@
+mixin checkbox(name, text, ch, disabled)
+    //- Принимает:
+    //- name {string} - имя чекбокса
+    //- text {string} - текст чекбокса
+    //- ch {boolean} - состояние чекбокса(checked)
+    //- disabled {boolean} - disabled ли чекбокс
+    //- Вызов:
+        +checkbox('agree', 'Запомнить меня')
+        +checkbox('agree', 'Запомнить меня', true)
+        +checkbox('agree', 'Запомнить меня', false, true)
+    .i-checkbox&attributes(attributes)
+        label.i-checkbox__label
+            input(type="checkbox" name=name checked=ch disabled=disabled hidden)
+            span(tabindex='0').i-checkbox__custom
+            span.i-checkbox__text!=text
+            block
+
+//- checkbox с не кликабельным текстом(за пределом label)
+mixin checkboxOut(name, text, ch, disabled)
+    //- Принимает:
+    //- name {string} - имя чекбокса
+    //- text {string} - текст чекбокса
+    //- ch {boolean} - состояние чекбокса(checked)
+    //- disabled {boolean} - disabled ли чекбокс
+    //- Вызов:
+        +checkboxOut('agree', 'Запомнить меня')
+    .i-checkbox.i-checkbox--out&attributes(attributes)
+        label.i-checkbox__label
+            input(type="checkbox" name=name checked=ch disabled=disabled hidden)
+            span(tabindex='0').i-checkbox__custom
+        span!=text
+        block

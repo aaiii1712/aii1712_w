@@ -1,0 +1,98 @@
+%input-hover {
+  &:hover,
+  &:focus {
+    border-color: #000;
+  }
+  &.error {
+    border-color: red;
+  }
+}
+input, textarea {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: normal;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #7b858d;
+  border-radius: 8px;
+  outline: none;
+  height: 50px;
+  padding: 0 16px;
+  margin: 0;
+  transition: .2s linear;
+  transition-property: border-color;
+}
+textarea {
+  height: 112px;
+  resize: none;
+}
+@include placeholder {
+  color: rgba(0,0,0,.5);
+}
+
+.input-group {
+  position: relative;
+  &__label {
+    position: absolute;
+    top: 19px;
+    left: 20px;
+    font-size: 18px;
+    line-height: 1;
+    pointer-events: none;
+    transition: all .25s linear;
+    color: rgba(#404040, .5);
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      display: none;
+    }
+  }
+  input,
+  textarea {
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 18px 20px 6px;
+    min-height: 56px;
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      padding: 5px 20px;
+    }
+    &:focus, &:active {
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+        & ~ .input-group__label {
+          display: none;
+        }
+      }
+    }
+    &.error {
+      border: 1px solid #FF0000;
+      & ~ .input-group__label {
+        color: #ff0000;
+      }
+    }
+  }
+  //error
+  label.error {
+    display: none !important;
+  //  font-size: 12px;
+  //  line-height: 1.4;
+  //  position: absolute;
+  //  top: 100%;
+  //  left: 0;
+  //  color: #af1c1c;
+  }
+  &.input-group-textarea {
+    min-height: 56px;
+    height: 112px;
+    textarea {
+      height: 100%;
+      padding: 22px 20px 6px;
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        padding: 12px 20px 6px;
+      }
+    }
+  }
+  &--notempty, &--focus {
+
+  }
+  &--focus {
+
+  }
+}

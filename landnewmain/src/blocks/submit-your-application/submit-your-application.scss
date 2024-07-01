@@ -1,0 +1,45 @@
+.sua-form {
+  padding: 20px;
+  border: 1px solid #CCCCCC;
+  border-radius: 16px;
+
+  &__title {
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  &__txt {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  &__fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__submit-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__policy {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  textarea {
+    height: auto;
+  }
+}

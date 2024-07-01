@@ -203,6 +203,12 @@ main {
 .section-padding {
 	padding-top: 36px;
 	padding-bottom: 36px;
+
+	@media (max-width: $mobile-big) {
+		padding-top: 24px;
+		padding-bottom: 24px;
+	
+	}
 }
 // @supports (-webkit-line-clamp: 6) {
 // 	.your-class {

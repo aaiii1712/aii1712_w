@@ -59,3 +59,33 @@
     height: auto;
   }
 }
+
+@media (max-width: $mobile-big) {
+  .sua-form {
+
+    &__title {
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    &__txt {
+      letter-spacing: 0;
+      line-height: 120%;
+    }
+
+    &__fields {
+      flex-direction: column;
+      svg {
+        display: none;
+      }
+    }
+
+    &__submit-row {
+      .submit-btn {
+        max-width: 100%;
+      }
+      flex-direction: column;
+    }
+  }
+}

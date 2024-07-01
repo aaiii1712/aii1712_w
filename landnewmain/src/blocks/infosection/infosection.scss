@@ -112,3 +112,9 @@
   display: flex;
   gap: 32px;
 }
+
+@media (max-width: $mobile-big) {
+  .infosection-wrp {
+    flex-direction: column;
+  }
+}

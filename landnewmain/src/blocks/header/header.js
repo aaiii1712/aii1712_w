@@ -18,38 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
     // Получаем элемент формы
-    const form = document.getElementById('main-form');
+    const form = document.getElementById('submit-your-application-form');
 
 
-
-    // Получаем все элементы с классом radio-row__item
-    const items = document.querySelectorAll('.radio-row__item');
-
-    // Функция для удаления класса is-active со всех элементов
-    function removeActiveClass() {
-        items.forEach(item => {
-            item.classList.remove('is-active');
-        });
-    }
-
-    // Обработчик события клика по элементу
-    function handleClick(event) {
-      // Проверяем, что клик произошел непосредственно на элементе .radio-row__item
-      if (event.target.classList.contains('radio-row__item')) {
-          // Удаляем класс is-active со всех элементов
-          removeActiveClass();
-          // Добавляем класс is-active к элементу, по которому кликнули
-          event.target.classList.add('is-active');
-          const cond = event.target.dataset.text
-          form.querySelector('input[name="conditions"]').value = cond
-      }
-      handleFormChange()
-    }
-
-    // Привязываем обработчик события к каждому элементу
-    items.forEach(item => {
-        item.addEventListener('click', handleClick);
-    });
 
 
     
@@ -57,17 +28,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Функция для валидации формы
   function validateForm() {
-    const nameInput = form.querySelector('input[name="name"]');
+
+    const infoInput = form.querySelector('textarea[name="info"]');
     const phoneInput = form.querySelector('input[name="phone"]');
-    const routeFromInput = form.querySelector('input[name="route-form"]');
-    const routeToInput = form.querySelector('input[name="route-to"]');
-    const conditionsInput = form.querySelector('input[name="conditions"]');
+    const routeFromInput = form.querySelector('input[name="from"]');
+    const routeToInput = form.querySelector('input[name="to"]');
 
     const errors = {};
 
     // Проверка имени
-    if (!nameInput.value) {
-        errors.name = 'Введите имя';
+
+    console.log("infoInput.value", infoInput.value);
+    if (!infoInput.value) {
+        errors.info = 'Введите информацию';
     }
 
     // Проверка номера телефона
@@ -85,11 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
         errors.routeTo = 'Введите место назначения';
     }
 
-    // Проверка скрытого поля conditions
-    if (!conditionsInput.value) {
-        errors.conditions = 'Необходимо согласиться с условиями';
-    }
-
     return errors;
   }
 
@@ -98,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const btn = form.querySelector(".blue-btn")
     const errors = validateForm();
 
-    if (errors.routeTo || errors.phone || errors.routeFrom || errors.routeTo || errors.conditions) {
+    if (errors.routeTo || errors.phone || errors.routeFrom || errors.routeTo || errors.info ) {
       btn.classList.add("is-disabled")
       btn.disabled = true;
     }else {
@@ -108,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Привязываем обработчик изменения к каждому полю формы
-  const formInputs = form.querySelectorAll('input');
+  const formInputs = form.querySelectorAll('input, textarea');
   formInputs.forEach(input => {
     input.addEventListener('change', handleFormChange);
   });
@@ -123,11 +91,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //ОТПРАВКА ФОРМЫ*****************************************\\
 
-  document.querySelector(".send-carriers").addEventListener("click", () => {
-    console.log("YM1 NEW BUTTON");
-    ym(95302256, "reachGoal", "request to carriers")
-  })
-
   const clearInputs = () => {
     const inputs = form.querySelectorAll(".input-group")
     inputs.forEach(function(el) {
@@ -137,9 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  form.querySelector('input[name="payments"]').addEventListener("change", () => {
-    form.querySelector('input[name="route-form"]').focus()
-  })
 
   // Добавляем обработчик события submit
   form.addEventListener('submit', function(event) {
@@ -147,12 +107,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    const nameInput = form.querySelector('input[name="name"]');
+    const infoInput = form.querySelector('textarea[name="info"]');
     const phoneInput = form.querySelector('input[name="phone"]');
-    const routeFromInput = form.querySelector('input[name="route-form"]');
-    const routeToInput = form.querySelector('input[name="route-to"]');
-    const conditionsInput = form.querySelector('input[name="conditions"]');
-    const paymentsInput = form.querySelector('input[name="payments"]');
+    const routeFromInput = form.querySelector('input[name="from"]');
+    const routeToInput = form.querySelector('input[name="to"]');
     // Предотвращаем стандартное поведение формы (отправку по умолчанию)
     event.preventDefault();
     const btn = form.querySelector(".blue-btn")
@@ -162,17 +120,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // Например, проверка на заполненность обязательных полей и др.
 
     // Отправляем форму с помощью fetch
-    fetch('https://api.1f.ru/api/telegram/order-landing-notification', {
+    fetch('https://devapi.1f.ru/api/landing/request/with-trail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: nameInput.value,
+        info: infoInput.value,
         phone: phoneInput.value,
-        conditions: conditionsInput.value,
-        route: `${routeFromInput.value} - ${routeToInput.value}`,
-        payments: paymentsInput.checked? 1 : 0
+        from: routeFromInput.value,
+        to: routeToInput.value,
       })
     })
     .then(response => {
@@ -185,22 +142,19 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.json();
     })
     .then(data => {
-      nameInput.value = ""
+      infoInput.value = ""
       phoneInput.value = ""
       routeFromInput.value = ""
       routeToInput.value = ""
-      conditionsInput.value = ""
-      document.querySelector(".radio-row__item.is-active").classList.remove("is-active")
       openModal("modal-succ")
       clearInputs()
       btn.classList.add("is-disabled")
     })
     .catch(error => {
-      nameInput.value = ""
+      infoInput.value = ""
       phoneInput.value = ""
       routeFromInput.value = ""
       routeToInput.value = ""
-      conditionsInput.value = ""
       console.error('Ошибка при отправке запроса:', error);
       btn.classList.add("is-disabled")
       clearInputs()
@@ -212,13 +166,13 @@ document.addEventListener("DOMContentLoaded", function() {
   //ОТПРАВКА ФОРМЫ*****************************************
 
 
-  //METRIKA
-  const ymEls = document.querySelectorAll(".ym-el")
-  ymEls.forEach( el => el.addEventListener("click", (e) => {
-    const goal = e.target.dataset.goal
-    ym(95302256,'reachGoal', goal)
-  }))
-  //METRIKA
+  // //METRIKA
+  // const ymEls = document.querySelectorAll(".ym-el")
+  // ymEls.forEach( el => el.addEventListener("click", (e) => {
+  //   const goal = e.target.dataset.goal
+  //   ym(95302256,'reachGoal', goal)
+  // }))
+  // //METRIKA
 
 
 });

@@ -23,7 +23,7 @@ input, textarea {
 	background: white;
   transition: $transition;
   &::placeholder {
-		color: #A09E9D;
+		color: #1D1C1C;
 	}
 
   &:hover {
@@ -35,7 +35,7 @@ textarea {
   resize: none;
 }
 @include placeholder {
-  color: #A09E9D;
+  color: #1D1C1C;
 }
 
 .input-group {
